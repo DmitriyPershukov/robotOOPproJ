@@ -1,8 +1,9 @@
 package gui;
 
-import java.util.Vector;
+import gui.Observer;
+import gui.RobotCoordinate;
+
 import java.awt.*;
-import java.util.Observable;
 
 public class RobotLogic {
 
@@ -12,11 +13,11 @@ public class RobotLogic {
     private volatile RobotCoordinate m_targetPosition = new RobotCoordinate(150, 100);
 
     private static final double maxVelocity = 0.1;
-    private static final double maxAngularVelocity = 0.001;
+    private static final double maxAngularVelocity = 0.03;
 
 
 
-    protected void setTargetPosition(Point p) {
+    public void setTargetPosition(Point p) {
         m_targetPosition = new RobotCoordinate(p.x, p.y);
     }
 
@@ -47,7 +48,7 @@ public class RobotLogic {
         return Math.atan2(rot.y, rot.x);
     }
 
-    protected void onModelUpdateEvent() {
+    public void onModelUpdateEvent() {
         double distance = distance(m_targetPosition.x, m_targetPosition.y, m_robotPosition.x, m_robotPosition.y);
         if (distance < 0.5)
             return;

@@ -2,7 +2,7 @@ package gui;
 
 import java.awt.*;
 import javax.swing.*;
-public class CoordinateWindow extends JInternalFrame implements Listener{
+public class CoordinateWindow extends JInternalFrame implements Listener {
 
     private TextArea text;
 

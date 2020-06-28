@@ -4,16 +4,14 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
 
 import javax.swing.*;
 
 import log.Logger;
+import stateSaver.WindowsStateSaver;
 
 /**
  * Что требуется сделать:
@@ -37,15 +35,18 @@ public class MainApplicationFrame extends JFrame
         setContentPane(desktopPane);
             LogWindow logWindow = createLogWindow();
             addWindow(logWindow);
+            logWindow.setName("logWindow");
 
             GameWindow gameWindow = new GameWindow();
             gameWindow.setSize(400, 400);
-            addWindow(gameWindow);
+        addWindow(gameWindow);
+            gameWindow.setName("gameWindow");
 
 
         CoordinateWindow coordinateWindow = new CoordinateWindow();
         coordinateWindow.setSize(354,450);
         addWindow(coordinateWindow);
+        coordinateWindow.setName("coordinateWindow");
 
         if(Files.exists(Paths.get("windows.json")))
         {

@@ -6,8 +6,8 @@ public class RobotCoordinate{
         this.x = x;
         this.y = y;
     }
-    double x;
-    double y;
+    public double x;
+    public double y;
 
     public RobotCoordinate rotate(double angle)
     {

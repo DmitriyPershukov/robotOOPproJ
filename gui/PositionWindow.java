@@ -3,7 +3,7 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class PositionWindow extends JInternalFrame implements Listener{
+public class PositionWindow extends JInternalFrame implements Listener {
     private TextArea text;
 
     public PositionWindow() {

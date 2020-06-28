@@ -1,9 +1,10 @@
-package gui;
+package stateSaver;
 
 import javax.swing.*;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import stateSaver.WindowState;
 
 import java.beans.PropertyVetoException;
 import java.io.File;
@@ -25,6 +26,7 @@ public class WindowsStateSaver {
         for (int i = 0; i < frames.length; i++) {
             WindowState window = new WindowState();
             window.width = (frames[i].getWidth());
+            window.windowName = frames[i].getName();
             window.height = (frames[i].getHeight());
             window.x = (frames[i].getX());
             window.y = (frames[i].getY());
@@ -47,13 +49,13 @@ public class WindowsStateSaver {
         ArrayList<WindowState> statesData =jsonConverter.fromJson(new String(states), listType);
         for(int i = 0; i < frames.length; i++)
         {
-            for (int j =0; j< statesData.size(); j++)
-            {
-                if(i != j)
-                    continue;
-                frames[i].setBounds(statesData.get(j).x, statesData.get(j).y, statesData.get(j).width, statesData.get(j).height);
-                frames[i].setIcon(statesData.get(j).isIcon);
-                frames[i].setMaximum(statesData.get(j).isMaxed);
+            for (int j =0; j< statesData.size(); j++) {
+                String winName = statesData.get(j).windowName;
+                if (winName.equals(frames[i].getName())) {
+                    frames[i].setBounds(statesData.get(j).x, statesData.get(j).y, statesData.get(j).width, statesData.get(j).height);
+                    frames[i].setIcon(statesData.get(j).isIcon);
+                    frames[i].setMaximum(statesData.get(j).isMaxed);
+                }
             }
         }
     }
