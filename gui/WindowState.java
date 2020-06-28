@@ -1,7 +1,7 @@
 package gui;
 
 
-public class windowState{
+public class WindowState {
 
     public Boolean isIcon;
 
