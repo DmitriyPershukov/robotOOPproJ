@@ -13,7 +13,7 @@ public class RobotLogic {
     private volatile RobotCoordinate m_targetPosition = new RobotCoordinate(150, 100);
 
     private static final double maxVelocity = 0.1;
-    private static final double maxAngularVelocity = 0.03;
+    private static final double maxAngularVelocity = 0.001;
 
 
 
@@ -57,7 +57,7 @@ public class RobotLogic {
         double angularVelocity = angleToTarget >= 0 ? maxAngularVelocity : -maxAngularVelocity;
         moveRobot(maxVelocity, angularVelocity, 10);
 
-        Observer.notifyModelUpdate(new Point(round(m_robotPosition.x), round(m_robotPosition.y)));
+        Observer.getInstanse().notifyModelUpdate(new Point(round(m_robotPosition.x), round(m_robotPosition.y)));
     }
 
     private static double applyLimits(double value, double min, double max) {

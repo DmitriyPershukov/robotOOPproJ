@@ -14,7 +14,7 @@ public class PositionWindow extends JInternalFrame implements Listener {
         panel.add(text, BorderLayout.CENTER);
         getContentPane().add(panel);
         pack();
-        Observer.subscribe(this);
+        Observer.getInstanse().subscribe(this);
     }
 
     public void onModelUpdate(Point modifiedPosition)
